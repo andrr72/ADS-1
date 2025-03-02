@@ -19,17 +19,17 @@ bool checkPrime(uint64_t value) {
 uint64_t nPrime(uint64_t n) {
   if (n == 1) return 2;
 
-  uint64_t count = 1; // Учитываем 2 как первое простое число
+  uint64_t count = 1;
   uint64_t candidate = 3;
 
   while (count < n) {
     if (checkPrime(candidate)) {
       count++;
     }
-    candidate += 2; // Проверяем только нечётные числа
+    candidate += 2;
   }
 
-  return candidate - 2; // Возвращаем последнее найденное простое число
+  return candidate - 2;
 }
 
 uint64_t nextPrime(uint64_t value) {
@@ -58,7 +58,7 @@ uint64_t twinPrimes(uint64_t lbound, uint64_t hbound) {
   uint64_t count = 0;
   uint64_t prev_prime = 0;
 
-  for (uint64_t i = std::max(lbound, 2ULL); i < hbound; ++i) {
+  for (uint64_t i = std::max<uint64_t>(lbound, 2ULL); i < hbound; ++i) {
     if (checkPrime(i)) {
       if (prev_prime != 0 && i - prev_prime == 2) {
         count++;
